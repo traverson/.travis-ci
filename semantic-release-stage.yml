@@ -10,9 +10,10 @@ jobs:
     - stage: release
       node_js: 12
       script: skip
+      before_deploy: npm install semantic-release @traverson/semantic-release-config --no-save
       deploy:
         provider: script
         edge: true
-        script: npx -p @traverson/semantic-release-config npx semantic-release
+        script: npx semantic-release
         on:
           all_branches: true
