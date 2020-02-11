@@ -1,0 +1,18 @@
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+(-(alpha|beta)\.\d+(@(alpha|beta))?)?$/
+
+before_install:
+  - curl ifconfig.co
+
+jobs:
+  include:
+    - stage: release
+      node_js: 12
+      script: skip
+      deploy:
+        provider: script
+        edge: true
+        script: npx -p @traverson/semantic-release-config semantic-release
+        on:
+          all_branches: true
