@@ -13,6 +13,6 @@ jobs:
       deploy:
         provider: script
         edge: true
-        script: npx -p @traverson/semantic-release-config semantic-release
+        script: npx -p @traverson/semantic-release-config npx semantic-release
         on:
           all_branches: true
